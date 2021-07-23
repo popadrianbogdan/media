@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    colors="true"
+    bootstrap="vendor/symfony-cmf/testing/bootstrap/bootstrap.php"
+>
+    <testsuites>
+        <testsuite name="Symfony CmfMediaBundle Test Suite">
+            <directory>./tests/Unit</directory>
+        </testsuite>
+
+        <testsuite name="phpcr">
+            <directory>./tests/WebTest</directory>
+            <directory>./tests/Functional/Doctrine/Phpcr</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>./</directory>
+            <exclude>
+                <directory>Resources/</directory>
+                <directory>Tests/</directory>
+                <directory>vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <php>
+        <server name="KERNEL_DIR" value="tests/Resources/app" />
+    </php>
+
+    <listeners>
+        <listener class="Symfony\Cmf\Component\Testing\Phpunit\DatabaseTestListener" />
+    </listeners>
+
+</phpunit>
